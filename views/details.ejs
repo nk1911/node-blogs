@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+
+    <div class="container mt-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title display-5 mb-4"><%= blog.title %></h5>
+          <h6 class="card-subtitle text-muted my-2"><%= blog.snippet %></h6>
+          <p class="card-text mt-2 mb-4"><%= blog.body %></p>
+          <a href="/" class="btn btn-primary">Back to Home</a>
+          <a id="del-btn" data-id="<%= blog.id %>" class="btn btn-danger"
+            >Delete</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <%- include("./partials/bscript.ejs") %>
+    <script>
+      const delButton = document.getElementById("del-btn");
+      delButton.addEventListener("click", (e) => {
+        const endpoint = `/blog/${delButton.dataset.id}`;
+        fetch(endpoint, {
+          method: "DELETE",
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            window.location.href = data.redirect;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+    </script>
+  </body>
+</html>

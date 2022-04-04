@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+
+    <div class="container my-4">
+      <h2 class="text-primary display-3 text-center mb-3">Create a new blog</h2>
+      <form action="/blog" method="POST">
+        <div class="form-floating mb-4">
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            placeholder="title"
+            name="title"
+          />
+          <label for="floatingInput">Title</label>
+        </div>
+        <div class="form-floating mb-4">
+          <input
+            type="text"
+            class="form-control"
+            id="snippet"
+            placeholder="snippet"
+            name="snippet"
+          />
+          <label for="floatingInput">Snippet</label>
+        </div>
+        <div class="form-floating mb-4">
+          <textarea
+            class="form-control"
+            placeholder="Leave a comment here"
+            id="body"
+            name="body"
+            style="height: 100px"
+          ></textarea>
+          <label for="floatingTextarea2">Body</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <%- include("./partials/bscript.ejs") %>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <%- include("./partials/nav.ejs") %>
+
+    <div class="container mt-4">
+      <h2 class="text-primary display-3 text-center">All blogs</h2>
+
+      <% if(blogs.length > 0){ %> <% blogs.map((blog)=>{ %>
+
+      <div class="card my-3">
+        <div class="card-body">
+          <h5 class="card-title"><%= blog.title %></h5>
+          <p class="card-text"><%= blog.snippet %></p>
+          <a href="/blog/<%= blog.id %>" class="btn btn-primary text-white"
+            >Read</a
+          >
+        </div>
+      </div>
+      <% })%> <% } else { %>
+      <h4 class="text-info">No blogs here</h4>
+      <% } %>
+    </div>
+    <%- include("./partials/bscript.ejs") %>
+  </body>
+</html>
